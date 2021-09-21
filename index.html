@@ -21,15 +21,16 @@
         <div class="spinner"></div>
       </div>
     </div>
-    <div id="unity-fullscreen-button" style="display: none;"></div>
+    <!-- <div id="unity-fullscreen-button" style="display: none;"></div> -->
     <script>
-      const hideFullScreenButton = "1";
+
+      // const hideFullScreenButton = "";
       const buildUrl = "Build";
-      const loaderUrl = buildUrl + "/human Chain 0.3.loader.js";
+      const loaderUrl = buildUrl + "/humanChain fs.loader.js";
       const config = {
-        dataUrl: buildUrl + "/human Chain 0.3.data.unityweb",
-        frameworkUrl: buildUrl + "/human Chain 0.3.framework.js.unityweb",
-        codeUrl: buildUrl + "/human Chain 0.3.wasm.unityweb",
+        dataUrl: buildUrl + "/humanChain fs.data.unityweb",
+        frameworkUrl: buildUrl + "/humanChain fs.framework.js.unityweb",
+        codeUrl: buildUrl + "/humanChain fs.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Numbase",
         productName: "Human Chain",
@@ -44,20 +45,20 @@
       const fullscreenButton = document.querySelector("#unity-fullscreen-button");
       const spinner = document.querySelector('.spinner');
 
-      const canFullscreen = (function() {
-        for (const key of [
-            'exitFullscreen',
-            'webkitExitFullscreen',
-            'webkitCancelFullScreen',
-            'mozCancelFullScreen',
-            'msExitFullscreen',
-          ]) {
-          if (key in document) {
-            return true;
-          }
-        }
-        return false;
-      }());
+      // const canFullscreen = (function() {
+      //   for (const key of [
+      //       'exitFullscreen',
+      //       'webkitExitFullscreen',
+      //       'webkitCancelFullScreen',
+      //       'mozCancelFullScreen',
+      //       'msExitFullscreen',
+      //     ]) {
+      //     if (key in document) {
+      //       return true;
+      //     }
+      //   }
+      //   return false;
+      // }());
 
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         container.className = "unity-mobile";
@@ -74,14 +75,14 @@
           progressBarFull.style.width = `${100 * progress}%`;
         }).then((unityInstance) => {
           loadingCover.style.display = "none";
-          if (canFullscreen) {
-            if (!hideFullScreenButton) {
-              fullscreenButton.style.display = "";
-            }
-            fullscreenButton.onclick = () => {
-              unityInstance.SetFullscreen(1);
-            };
-          }
+          // if (canFullscreen) {
+          //   if (!hideFullScreenButton) {
+          //     fullscreenButton.style.display = "";
+          //   }
+          //   fullscreenButton.onclick = () => {
+          //     unityInstance.SetFullscreen(1);
+          //   };
+          // }
         }).catch((message) => {
           alert(message);
         });
